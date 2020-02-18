@@ -60,5 +60,18 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    routes () {
+      return axios.get('https://my-api/users')
+        .then((res) => {
+          return res.data.map((user) => {
+            return {
+              route: '/users/' + user.id,
+              payload: user
+            }
+          })
+        })
+    }
   }
 }

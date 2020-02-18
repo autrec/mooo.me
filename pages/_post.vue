@@ -4,8 +4,10 @@
       <Header />
       <a-layout class="main-width main-content">
         <a-layout-content>
-          <h2>{{postData.title.rendered}}</h2>
-          <span>{{postData.date}}</span>
+          <div class="content-head">
+            <h1>{{postData.title.rendered}}</h1>
+            <span>{{postData.date}}</span>
+          </div>
           <div v-html="postData.content.rendered"></div>
         </a-layout-content>
         <a-layout-sider theme="light">
@@ -66,5 +68,15 @@ export default {
 }
 .a-layout-sider{
   background: #fff;
+}
+.content-head{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.content-head h1{
+  margin-bottom: 0px;
+}
+.content-head span{
+  
 }
 </style>
