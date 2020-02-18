@@ -1,0 +1,70 @@
+<template>
+  <div>
+    <a-layout>
+      <Header />
+      <a-layout class="main-width main-content">
+        <a-layout-content>
+          <h2>{{postData.title.rendered}}</h2>
+          <span>{{postData.date}}</span>
+          <div v-html="postData.content.rendered"></div>
+        </a-layout-content>
+        <a-layout-sider theme="light">
+          <a-layout-footer :style="{ textAlign: 'center' }">
+            Ant Design ©2018 Created by Ant UED
+          </a-layout-footer>
+        </a-layout-sider>
+      </a-layout>
+    </a-layout>
+  </div>
+</template>
+<script>
+import axios from 'axios'
+import Header from '@/components/Header.vue'
+export default {
+  components: {
+    Header,
+  },
+  data() {
+    return {
+      postData: {},
+      temp: {},
+      actions: [
+        { type: 'star-o', text: '156' },
+        { type: 'like-o', text: '156' },
+        { type: 'message', text: '2' },
+      ],
+    }
+  },
+  computed: {
+    listData2 () {
+      return this.$store.state.listData
+    }
+  },
+  methods: {
+    getData(){
+      //this.$store.dispatch("getListData","1")
+      //console.log(this.$route.params)
+    }
+  },
+  mounted: function(){
+    this.getData()
+  },
+  async asyncData ({route}) {
+    const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${route.params.post}`)
+    return {postData: data[0] }
+  }
+}
+</script>
+<style> 
+.main-content{
+  background: #fff;
+  margin: 60px auto 20px;
+}
+.ant-layout-content{
+  min-height: 500px;
+  padding: 0 20px;
+}
+.a-layout-sider{
+  background: #fff;
+}
+</style>
