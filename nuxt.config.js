@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 export default {
   mode: 'universal',
   /*
@@ -63,12 +63,12 @@ export default {
   },
   generate: {
     routes () {
-      return axios.get('https://my-api/users')
+      return axios.get('https://zycao.com/wp-json/wp/v2/posts?per_page=100')
         .then((res) => {
-          return res.data.map((user) => {
+          return res.data.map((post) => {
             return {
-              route: '/users/' + user.id,
-              payload: user
+              route: '/' + post.slug,
+              payload: post
             }
           })
         })
