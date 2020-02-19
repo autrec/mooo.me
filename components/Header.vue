@@ -1,14 +1,18 @@
 <template>
   <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
     <div class="main-width header-menu">
-      <div class="logo" />
+      <nuxt-link to="/" class="logo">logo</nuxt-link>
       <a-menu v-model="current" mode="horizontal">
-        <a-menu-item key="mail"> <a-icon type="mail" />Navigation One </a-menu-item>
+        <a-menu-item key="mail">
+          <nuxt-link to="/"><a-icon type="mail" />首页</nuxt-link>
+        </a-menu-item>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper"
-            ><a-icon type="setting" />Navigation Three - Submenu</span
+            ><a-icon type="setting" />标签</span
           >
-          <a-menu-item key="setting:1">Option 1</a-menu-item>
+          <a-menu-item key="setting:1">
+            <nuxt-link to="/hyperledger-fabric-env">fabric</nuxt-link>
+          </a-menu-item>
           <a-menu-item key="setting:2">Option 2</a-menu-item>
           <a-menu-item key="setting:3">Option 3</a-menu-item>
           <a-menu-item key="setting:4">Option 4</a-menu-item>
@@ -26,14 +30,31 @@
 export default {
   data() {
     return {
-      current: ['mail'],
+      
     }
+  },
+  computed: {
+    current(){
+      return this.$store.state.current
+    }
+  },
+  methods: {
+    setCurrent:function(){
+      var path = this.$route.path
+      if(path == "/"){
+        //this.current = ['mail']
+      }
+    }
+  },
+  mounted: function(){
+    this.setCurrent()
   }
 }
 </script>
 <style scoped>
 .ant-layout-header{
   background: #fff;
+  padding: 0;
   height: 48px;
   line-height: 48px;
 }
@@ -41,10 +62,17 @@ export default {
   margin: 0 auto;
 }
 .logo {
-  width: 120px;
+  width: 60px;
   height: 40px;
+  line-height: 40px;
   background: rgba(187, 47, 47, 0.2);
   margin: 4px 16px 4px 0;
   float: left;
 }
+@media (max-width: 940px){
+  .ant-layout-header{
+    padding: 0 20px;
+  }
+}
+
 </style>

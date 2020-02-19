@@ -17,6 +17,7 @@ html {
   box-sizing: border-box;
 }
 .main-width{
-  width: 900px;
+  max-width: 900px;
+  width: 100%;
 }
 </style>

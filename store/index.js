@@ -1,6 +1,7 @@
 export const state = () => ({
   listData: [],
-  post: {}
+  post: {},
+  current: ['setting:2']
 })
 
 export const mutations = {
@@ -17,16 +18,22 @@ export const mutations = {
       })
     }
   },
-  remove (state, { todo }) {
-    state.list.splice(state.list.indexOf(todo), 1)
-  },
-  toggle (state, todo) {
-    todo.done = !todo.done
+  setCurren (state, text) {
+    state.current = [text]
   }
 }
 
 export const actions = {
   getListData(context,param){
     context.commit('setListData',param)
+  },
+  setCurren(context,param){
+    var text = "mail"
+    if(param == '/'){
+      text = 'mail'
+    }else if(param == 'hyperledger-fabric-env'){
+      text = 'setting:1'
+    }
+    context.commit("setCurren", text)
   }
 }

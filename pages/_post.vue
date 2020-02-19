@@ -51,8 +51,10 @@ export default {
   mounted: function(){
     this.getData()
   },
-  async asyncData ({route}) {
-    const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${route.params.post}`)
+  async asyncData ({store, route, params, payload }) {
+    store.dispatch("setCurren", params.post)
+    if(payload) return {postData: payload}
+    const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${params.post}`)
     return {postData: data[0] }
   }
 }
@@ -76,7 +78,9 @@ export default {
 .content-head h1{
   margin-bottom: 0px;
 }
-.content-head span{
-  
+@media (max-width: 940px){
+  .ant-layout-sider{
+    display: none;
+  }
 }
 </style>

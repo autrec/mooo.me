@@ -71,7 +71,8 @@ export default {
   mounted: function(){
     //this.getData()
   },
-  async asyncData ({ params }) {
+  async asyncData ({ store, params }) {
+    store.dispatch("setCurren", "/")
     const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=6`)
     return { listData: data }
   }
