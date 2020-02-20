@@ -1,7 +1,8 @@
 export const state = () => ({
   listData: [],
   post: {},
-  current: ['setting:2']
+  current: ['setting:2'],
+  anchors: {}
 })
 
 export const mutations = {
@@ -20,6 +21,9 @@ export const mutations = {
   },
   setCurren (state, text) {
     state.current = [text]
+  },
+  setAnchors (state, text) {
+    state.anchors = text
   }
 }
 
@@ -35,5 +39,9 @@ export const actions = {
       text = 'setting:1'
     }
     context.commit("setCurren", text)
+  },
+  setAnchors (context,param) {
+
+    context.commit("setAnchors", param)
   }
 }

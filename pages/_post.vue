@@ -55,12 +55,20 @@ export default {
     this.getData()
   },
   async asyncData ({store, route, params, payload }) {
+    var res = payload
     store.dispatch("setCurren", params.post)
-    if(payload) return {postData: payload}
-    const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${params.post}`)
+    if(!payload){
+      const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${params.post}`)
+      res = data[0]
+    }
+    var anchors = []
     var reg = /<h([2-6]).*?\>(.*?)<\/h[2-6]>/g
-    data[0].content.rendered = data[0].content.rendered.replace(reg,(matched,c1,c2,c3,groups)=>{return '<h'+c1+' id="'+c2+'">'+c2+'</h'+c1+'>'})
-    return {postData: data[0] }
+    res.content.rendered = res.content.rendered.replace(reg,(matched,v1,v2,v3,groups)=>{
+      //anchors.push({href:v1,title:v2})
+      return '<h'+v1+' id="'+v2+'">'+v2+'</h'+v1+'>'
+    })
+    //store.dispatch("setAnchors",anchors)
+    return {postData: res }
   }
 }
 </script>
