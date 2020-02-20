@@ -26,7 +26,19 @@
             </a-list-item>
           </a-list>
         </a-layout-content>
-        <a-layout-sider theme="light">
+        <a-layout-sider theme="light" width="240">
+          <a-card hoverable style="width: 240px">
+            <img
+              alt="example"
+              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              slot="cover"
+            />
+            <a-card-meta title="Europe Street beat">
+              <template slot="description"
+                >www.instagram.com</template
+              >
+            </a-card-meta>
+          </a-card>
           <a-layout-footer :style="{ textAlign: 'center' }">
             Ant Design ©2018 Created by Ant UED
           </a-layout-footer>
@@ -80,14 +92,19 @@ export default {
 </script>
 <style> 
 .main-content{
-  background: #fff;
-  margin: 60px auto 20px;
+  background: #f0f2f5;
+  margin: 10px auto 20px;
 }
 .ant-layout-content{
+  background: #fff;
   min-height: 500px;
   padding: 0 20px;
+  margin-right: 10px;
 }
-.a-layout-sider{
+.ant-layout-sider{
+  background: #f0f2f5;
+}
+.ant-layout-footer{
   background: #fff;
 }
 </style>

@@ -14,6 +14,7 @@
           <a-layout-footer :style="{ textAlign: 'center' }">
             Ant Design ©2018 Created by Ant UED
           </a-layout-footer>
+          <Anchor />
         </a-layout-sider>
       </a-layout>
     </a-layout>
@@ -22,9 +23,11 @@
 <script>
 import axios from 'axios'
 import Header from '@/components/Header.vue'
+import Anchor from '@/components/Anchor.vue'
 export default {
   components: {
     Header,
+    Anchor
   },
   data() {
     return {
@@ -55,18 +58,21 @@ export default {
     store.dispatch("setCurren", params.post)
     if(payload) return {postData: payload}
     const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${params.post}`)
+    var reg = /<h([2-6]).*?\>(.*?)<\/h[2-6]>/g
+    data[0].content.rendered = data[0].content.rendered.replace(reg,(matched,c1,c2,c3,groups)=>{return '<h'+c1+' id="'+c2+'">'+c2+'</h'+c1+'>'})
     return {postData: data[0] }
   }
 }
 </script>
 <style> 
 .main-content{
-  background: #fff;
-  margin: 60px auto 20px;
+  background: #f0f2f5;
+  margin: 10px auto 20px;
 }
 .ant-layout-content{
   min-height: 500px;
   padding: 0 20px;
+  margin-right: 10px;
 }
 .a-layout-sider{
   background: #fff;

@@ -1,5 +1,5 @@
 <template>
-  <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
+  <a-layout-header >
     <div class="main-width header-menu">
       <nuxt-link to="/" class="logo">logo</nuxt-link>
       <a-menu v-model="current" mode="horizontal">
