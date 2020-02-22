@@ -38,6 +38,11 @@
                 >www.instagram.com </template>
             </a-card-meta>
           </a-card>
+          <a-card title="Card title" :bordered="false" style="width: 260px">
+            <p>Card content</p>
+            <p>Card content</p>
+            <p>Card content</p>
+          </a-card>
           <Footer />
         </a-layout-sider>
       </a-layout>
