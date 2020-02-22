@@ -10,7 +10,7 @@
           </div>
           <div v-html="postData.content.rendered"></div>
         </a-layout-content>
-        <a-layout-sider theme="light">
+        <a-layout-sider theme="light" width="300">
           <a-layout-footer :style="{ textAlign: 'center' }">
             Ant Design ©2018 Created by Ant UED
           </a-layout-footer>
@@ -63,8 +63,9 @@ export default {
     }
     var anchors = []
     var reg = /<h([2-6]).*?\>(.*?)<\/h[2-6]>/g
+    var h2 = {}
     res.content.rendered = res.content.rendered.replace(reg,(matched,v1,v2,v3,groups)=>{
-      //anchors.push({href:v1,title:v2})
+      anchors.push({h:v1,title:v2})
       return '<h'+v1+' id="'+v2+'">'+v2+'</h'+v1+'>'
     })
     //store.dispatch("setAnchors",anchors)

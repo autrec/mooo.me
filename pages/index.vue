@@ -26,18 +26,13 @@
             </a-list-item>
           </a-list>
         </a-layout-content>
-        <a-layout-sider theme="light" width="240">
-          <a-card hoverable style="width: 240px">
+        <a-layout-sider theme="light" width="300">
+          <a-card hoverable style="width: 300px">
             <img
               alt="example"
               src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
               slot="cover"
             />
-            <a-card-meta title="Europe Street beat">
-              <template slot="description"
-                >www.instagram.com</template
-              >
-            </a-card-meta>
           </a-card>
           <a-layout-footer :style="{ textAlign: 'center' }">
             Ant Design ©2018 Created by Ant UED

@@ -2,7 +2,7 @@ export const state = () => ({
   listData: [],
   post: {},
   current: ['setting:2'],
-  anchors: {}
+  anchors: []
 })
 
 export const mutations = {
