@@ -8,7 +8,7 @@
         </a-menu-item>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper"
-            ><a-icon type="tag" />标签</span
+            ><a-icon type="tag" />分类</span
           >
           <a-menu-item key="tag:1">
             <nuxt-link to="/hyperledger-fabric-env">fabric</nuxt-link>

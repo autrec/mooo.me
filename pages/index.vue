@@ -43,6 +43,10 @@
             <p>Card content</p>
             <p>Card content</p>
           </a-card>
+          <a-list size="small" :bordered="false" :dataSource="data">
+            <a-list-item slot="renderItem" slot-scope="item, index">{{item}}</a-list-item>
+            <div slot="header">Header</div>
+          </a-list>
           <Footer />
         </a-layout-sider>
       </a-layout>
