@@ -26,8 +26,8 @@
             </a-list-item>
           </a-list>
         </a-layout-content>
-        <a-layout-sider theme="light" width="300">
-          <a-card hoverable style="width: 300px">
+        <a-layout-sider theme="light" width="260">
+          <a-card hoverable style="width: 260px">
             <img
               alt="example"
               src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"

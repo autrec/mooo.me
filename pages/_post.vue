@@ -10,7 +10,7 @@
           </div>
           <div v-html="postData.content.rendered"></div>
         </a-layout-content>
-        <a-layout-sider theme="light" width="300">
+        <a-layout-sider theme="light" width="260">
           <a-layout-footer :style="{ textAlign: 'center' }">
             Ant Design ©2018 Created by Ant UED
           </a-layout-footer>
