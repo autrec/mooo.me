@@ -58,8 +58,8 @@ export default {
     var res = payload
     store.dispatch("setCurren", params.post)
     if(!payload){
-      const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=1&slug=${params.post}`)
-      res = data[0]
+      const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts/${params.post}`)
+      res = data
     }
     var anchors = []
     var reg = /<h([2-6]).*?\>(.*?)<\/h[2-6]>/g

@@ -20,7 +20,7 @@
                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
               />
               <a-list-item-meta>
-                <nuxt-link slot="title" :to="'post/'+item.id">{{item.title.rendered}}</nuxt-link>
+                <nuxt-link slot="title" :to="item.slug">{{item.title.rendered}}</nuxt-link>
               </a-list-item-meta>
               <div v-html=item.excerpt.rendered></div>
             </a-list-item>

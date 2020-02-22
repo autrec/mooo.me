@@ -67,7 +67,7 @@ export default {
         .then((res) => {
           return res.data.map((post) => {
             return {
-              route: '/' + post.slug,
+              route: '/post/' + post.id,
               payload: post
             }
           })
