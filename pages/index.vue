@@ -39,9 +39,7 @@
               >
             </a-card-meta>
           </a-card>
-          <a-layout-footer :style="{ textAlign: 'center' }">
-            Ant Design ©2018 Created by Ant UED
-          </a-layout-footer>
+          <Footer />
         </a-layout-sider>
       </a-layout>
     </a-layout>
@@ -50,9 +48,11 @@
 <script>
 import axios from 'axios'
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Header,
+    Footer
   },
   data() {
     return {
@@ -103,8 +103,5 @@ export default {
 }
 .ant-layout-sider{
   background: #f0f2f5;
-}
-.ant-layout-footer{
-  background: #fff;
 }
 </style>

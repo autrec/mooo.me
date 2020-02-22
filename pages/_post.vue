@@ -11,9 +11,7 @@
           <div v-html="postData.content.rendered"></div>
         </a-layout-content>
         <a-layout-sider theme="light" width="260">
-          <a-layout-footer :style="{ textAlign: 'center' }">
-            Ant Design ©2018 Created by Ant UED
-          </a-layout-footer>
+          <Footer />
           <Anchor />
         </a-layout-sider>
       </a-layout>
@@ -24,10 +22,12 @@
 import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Anchor from '@/components/Anchor.vue'
+import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Header,
-    Anchor
+    Anchor,
+    Footer
   },
   data() {
     return {
