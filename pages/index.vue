@@ -15,7 +15,8 @@
               </template>
               <img
                 slot="extra"
-                width="272"
+                width="180"
+                height="120"
                 alt="logo"
                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
               />
@@ -111,5 +112,11 @@ export default {
 }
 .ant-layout-sider{
   background: #f0f2f5;
+}
+.ant-list-vertical .ant-list-item-meta {
+    margin-bottom: 0px;
+}
+.ant-list-vertical .ant-list-item-extra {
+  margin-left: 20px;
 }
 </style>
