@@ -2,7 +2,9 @@ export const state = () => ({
   listData: [],
   post: {},
   current: ['setting:2'],
-  anchors: []
+  anchors: [],
+  per_page: 10
+
 })
 
 export const mutations = {
@@ -24,7 +26,8 @@ export const mutations = {
   },
   setAnchors (state, text) {
     state.anchors = text
-  }
+  },
+
 }
 
 export const actions = {

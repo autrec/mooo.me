@@ -44,10 +44,6 @@
             <p>Card content</p>
             <p>Card content</p>
           </a-card>
-          <a-list size="small" :bordered="false" :dataSource="data">
-            <a-list-item slot="renderItem" slot-scope="item, index">{{item}}</a-list-item>
-            <div slot="header">Header</div>
-          </a-list>
           <Footer />
         </a-layout-sider>
       </a-layout>
@@ -92,9 +88,9 @@ export default {
   mounted: function(){
     //this.getData()
   },
-  async asyncData ({ store, params }) {
-    store.dispatch("setCurren", "/")
-    const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts?per_page=6`)
+  async asyncData (context) {
+    context.store.dispatch("setCurren", "/")
+    const data = await context.$axios.$get(`/posts?per_page=6`)
     return { listData: data }
   }
 }

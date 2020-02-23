@@ -54,11 +54,11 @@ export default {
   mounted: function(){
     this.getData()
   },
-  async asyncData ({store, route, params, payload }) {
+  async asyncData ({store, route, $axios, params, payload }) {
     var res = payload
     store.dispatch("setCurren", params.post)
     if(!payload){
-      const {data} = await axios.get(`https://zycao.com/wp-json/wp/v2/posts/${params.post}`)
+      var data = await $axios.$get(`/posts/${params.post}`)
       res = data
     }
     var anchors = []

@@ -19,6 +19,7 @@ export default {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+  //loading: '~/components/loading.vue',
   /*
   ** Global CSS
   */
@@ -29,7 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui'
+    '@/plugins/antd-ui',
+    '~/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,7 +45,7 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   /*
   ** Axios module configuration
@@ -62,8 +64,9 @@ export default {
     }
   },
   generate: {
+    dir: 'dist',
     routes () {
-      return axios.get('https://zycao.com/wp-json/wp/v2/posts?per_page=100')
+      return axios.get('/posts?per_page=100')
         .then((res) => {
           return res.data.map((post) => {
             return {
@@ -73,5 +76,8 @@ export default {
           })
         })
     }
+  },
+  validate({ params, query }) {
+    //return /^d+$/.test(params.id) // must be number
   }
 }
