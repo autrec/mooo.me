@@ -1,7 +1,7 @@
 export default function (app) {
   let axios = app.$axios; 
  // 基本配置
-  axios.defaults.baseURL = 'https://zycao.com/wp-json/wp/v2/'
+  axios.defaults.baseURL = 'https://zycao.com/wp-json/wp/v2'
 
   // 请求回调
   axios.onRequest(config => {})

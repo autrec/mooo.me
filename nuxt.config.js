@@ -66,7 +66,7 @@ export default {
   generate: {
     dir: 'dist',
     routes () {
-      return axios.get('/posts?per_page=100')
+      return axios.get('https://zycao.com/wp-json/wp/v2/posts?per_page=100')
         .then((res) => {
           return res.data.map((post) => {
             return {
