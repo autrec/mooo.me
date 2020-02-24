@@ -11,13 +11,13 @@
             ><a-icon type="tag" />分类</span
           >
           <a-menu-item key="tag:1">
-            <nuxt-link to="/hyperledger-fabric-env">fabric</nuxt-link>
+            <nuxt-link to="/blockchain">区块链</nuxt-link>
           </a-menu-item>
           <a-menu-item key="tag:2">Option 2</a-menu-item>
           <a-menu-item key="tag:3">Option 3</a-menu-item>
           <a-menu-item key="tag:4">Option 4</a-menu-item>
         </a-sub-menu>
-        <a-menu-item key="alipay">
+        <a-menu-item key="copyright">
           <nuxt-link to="/about"><a-icon type="copyright" />About</nuxt-link>
         </a-menu-item>
       </a-menu>

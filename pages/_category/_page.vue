@@ -5,7 +5,7 @@
       <a-layout class="main-width main-content">
         <a-layout-content>
           <a-list itemLayout="vertical" size="large" :dataSource="listData">
-            <div slot="footer"><a-button>下一页</a-button></div>
+            <div slot="footer"><a-button @click="nextPage">下一页</a-button></div>
             <a-list-item slot="renderItem" slot-scope="item, index" key="item.title">
               <template slot="actions" v-for="{type, text} in actions">
                 <span :key="type">
@@ -83,6 +83,16 @@ export default {
   methods: {
     getData(){
       this.$store.dispatch("getListData","1")
+    },
+    nextPage(){
+      var page = this.$route.params.page || 1
+      var category = this.$route.params.category
+      if(category){
+        this.$router.push(`/${category}/${parseInt(page)+1}`)
+      }else{
+        this.$router.push(`/page/${parseInt(page)+1}`)
+      }
+      
     }
   },
   mounted: function(){
@@ -90,7 +100,14 @@ export default {
   },
   async asyncData (context) {
     context.store.dispatch("setCurren", "/")
-    const data = await context.$axios.$get(`/posts?per_page=6`)
+    var page = context.params.page || 1
+    var category = context.params.category
+    var url = `/posts?page=${parseInt(page)}&per_page=${context.store.state.per_page}`
+    if(category == 'page'){
+    }else if(category == 'blockchain'){
+      url += `&categories=1621`
+    }
+    const data = await context.$axios.$get(url)
     return { listData: data }
   }
 }

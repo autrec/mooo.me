@@ -60,6 +60,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    publicPath: 'https://cdn.mooo.autre.cn',
     extend (config, ctx) {
     }
   },
@@ -68,12 +69,28 @@ export default {
     routes () {
       return axios.get('https://zycao.com/wp-json/wp/v2/posts?per_page=100')
         .then((res) => {
-          return res.data.map((post) => {
+          var num = 0, blockchain_num = 0
+          var routes = res.data.map((post) => {
+            num++
+            if(post.categories.indexOf(1621)>-1){
+              blockchain_num++
+            }
             return {
               route: '/post/' + post.id,
               payload: post
             }
           })
+          routes.push('/')
+          //分页
+          for(var i=2;i<parseInt(num/10)+2;i++){
+            routes.push(`/page/${i}`)
+          }
+          //分类分页
+          routes.push('/blockchain')
+          for(var i=2;i<parseInt(blockchain_num/10)+2;i++){
+            routes.push(`/blockchain/${i}`)
+          }
+          return routes
         })
     }
   },

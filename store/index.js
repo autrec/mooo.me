@@ -34,12 +34,14 @@ export const actions = {
   getListData(context,param){
     context.commit('setListData',param)
   },
-  setCurren(context,param){
+  setCurren(context, param){
     var text = "mail"
     if(param == '/'){
       text = 'mail'
-    }else if(param == 'hyperledger-fabric-env'){
-      text = 'setting:1'
+    }else if(param == 'about'){
+      text = 'copyright'
+    }else if(param == 'blockchain'){
+      text = 'tag:1'
     }
     context.commit("setCurren", text)
   },
