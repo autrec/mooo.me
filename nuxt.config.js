@@ -13,6 +13,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {src: 'https://hm.baidu.com/hm.js?409a7a374fbcec1acc64716522171ae2'}
     ]
   },
   /*
@@ -31,7 +34,8 @@ export default {
   */
   plugins: [
     '@/plugins/antd-ui',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/baiduGa'
   ],
   /*
   ** Nuxt.js dev-modules
