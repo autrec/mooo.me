@@ -9,7 +9,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { name: 'baidu-site-verification', content: 'gsP1FqZ4rQ'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -50,6 +51,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
@@ -83,6 +85,33 @@ export default {
               route: '/post/' + post.id,
               payload: post
             }
+          })
+          routes.push('/')
+          //分页
+          for(var i=2;i<parseInt(num/10)+2;i++){
+            routes.push(`/page/${i}`)
+          }
+          //分类分页
+          routes.push('/blockchain')
+          for(var i=2;i<parseInt(blockchain_num/10)+2;i++){
+            routes.push(`/blockchain/${i}`)
+          }
+          return routes
+        })
+    }
+  },
+  sitemap: {
+    hostname: 'https://mooo.me',
+    routes: () => {
+      return axios.get('https://zycao.com/wp-json/wp/v2/posts?per_page=100')
+        .then((res) => {
+          var num = 0, blockchain_num = 0
+          var routes = res.data.map((post) => {
+            num++
+            if(post.categories.indexOf(1621)>-1){
+              blockchain_num++
+            }
+            return '/post/' + post.id
           })
           routes.push('/')
           //分页
